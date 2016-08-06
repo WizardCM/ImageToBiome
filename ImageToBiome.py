@@ -11,9 +11,12 @@ from pymclevel import TAG_String
 from numpy import zeros
 from PIL import Image
 import json
+import time
+from datetime import datetime
 from pprint import pprint
 
 displayName = "Image to Biome Map"
+timeFormat = "[%H:%M:%S]"
 
 # input = image filename (relative path probably best)
 inputs = (
@@ -54,6 +57,7 @@ def perform(level, box, options):
 	print('=====================================')
 	print('= Starting Image to Biome filter... =');
 	print('=====================================')
+	startTime = time.strftime(timeFormat);
 	
 	if selectionWidth == imageWidth and selectionHeight == imageHeight:
 		print('Image and selection size match! Starting..');
@@ -87,7 +91,11 @@ def perform(level, box, options):
 						progress = int(100 * float(currentBlocks + 1)/float(totalBlocks))
 						# originally we were going to show a progress bar IN MCEdit - turns out just rendering it slows down this task
 						if progress > currentPercent:
-							print("Completed " + str(progress) + '%')
+							currentTime = time.strftime(timeFormat);
+							print(currentTime + " Completed " + str(progress) + '%')
+							if progress%10 == 0:
+								timeDifference = datetime.strptime(currentTime, timeFormat) - datetime.strptime(startTime, timeFormat)
+								print ("           Time Elapsed: " + str(timeDifference))
 							currentPercent = progress
 						currentBlocks = currentBlocks + 1
 						loc = str(image.getpixel((bx - minx, bz - minz))).strip('()')

@@ -4,18 +4,18 @@ An MCEdit filter that combines the data from an image and a json file into biome
 
 Note: Coordinates are based on pixels, not chunks.
 ## Getting Started
-1. Create an image file, the same size as your MCEdit selection, and populate it with colours
-2. Create a mappings json file, with an RGB colour as they key, and the Biome ID as the value.
+1. Create an image file, the same size as your MCEdit selection (in blocks, not chunks), and populate it with colours
+2. Create a mappings json file, with an RGB colour as the key, and the [Biome ID](https://minecraft.gamepedia.com/Biome) as the value.
 3. Open a world in MCEdit, and make your selection.
 3. Open the filter in MCEdit, and direct both locations to where you saved the previous two files.
-4. Click filter. If everything matches, the script will run and convert the blocks in each chunk.
-5. Save your newly modified world, then text it in-game.
+4. Click Filter. If everything matches, the script will run and convert the blocks in each chunk.
+5. Save your newly modified world, then test it in-game.
 
 Note: This will not change the colours of your world, just the biomes. If you want the colours to match what you had in your image, modify the colormap/grass.png file in a Resource Pack.
 
 ## Example
 
-Feek free to try this yourself with the files in the `/example` directory.
+Feel free to try this yourself with the files in the `/example` directory. You will need to provide your own world.
 
 ### The Image
 ![Alt text](/example/pixels.png?raw=true "Pixels.png")
